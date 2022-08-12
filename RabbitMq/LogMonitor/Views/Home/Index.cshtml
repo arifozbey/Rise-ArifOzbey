@@ -1,0 +1,87 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <meta name="viewport" content="width=device-width" />
+    <title>Log</title>
+</head>
+<body>
+    <h2>Log Monitor from RabbitMQ</h2>
+    <div>
+        <table class="logTable">
+            <thead>
+                <tr>
+                    <th width="10%">Log Id</th>
+                    <th width="15%">Log Time</th>
+                    <th>Log Message</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+
+<script>
+    var baseUri = '';
+
+    ($(function () {
+        $(document).ready(function () {
+            baseUri = '@string.Format("{0}://{1}{2}", Request.Url.Scheme, Request.Url.Authority, Url.Content("~"))'
+            SetTimer();
+        });
+    }));
+
+    function SetTimer() {
+        setInterval(function () {
+            GetLogs();
+        }, 2000);
+    }
+
+    function GetLogs() {
+        $.ajax({
+            url: baseUri + "Home/FetchLogs",
+            type: "GET",
+            success: function (data) {
+                console.log(data);
+                var tbody = $('.logTable').find('tbody');
+                $(tbody).find('tr').remove();
+                $(data).each(function () {
+                    var cls = this.Id % 2 == 0 ? 'grayRow' : 'whiteRow';
+                    $(tbody).append('<tr class=' + cls + '> <td>' + this.Id + '</td> <td>' + this.Time + '</td> <td>' + this.Message + '</td>  </tr>');
+                });
+            },
+            error: function () {
+
+            }
+        });
+    }
+</script>
+
+<style>
+    .logTable {
+        width: 100%;
+        font-size: 12px;
+    }
+
+        .logTable td, th {
+            border: thin solid rgb(199, 199, 199);
+            padding: 5px;
+        }
+
+    .grayRow {
+        background-color: #e3d9d9;
+    }
+
+    .whiteRow {
+        background-color: white;
+    }
+</style>
