@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Model;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,5 +13,7 @@ namespace Rise_ArifOzbey.Data
             : base(options)
         {
         }
+        public virtual DbSet<KisiModel> KisiModels { get; set; }
+        public virtual DbSet<KisiDetayModel> KisiDetayModels { get; set; }
     }
 }
