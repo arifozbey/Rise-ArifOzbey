@@ -22,5 +22,7 @@ namespace Model
         [Required(ErrorMessage = "Icerik is required.")]
         [StringLength(140, ErrorMessage = "Name cannot be longer than 140 characters.")]
         public string Icerik { get; set; }
+        public Guid KisiID { get; set; }
+
     }
 }

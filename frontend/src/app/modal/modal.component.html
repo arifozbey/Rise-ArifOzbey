@@ -1,0 +1,92 @@
+<div class="modal-header">
+  <h5>{{this.kisi}}</h5>
+</div>
+<div class="modal-body">
+  <form [formGroup]="KisiDetayData">
+    <div class="row">
+
+      <table class="">
+        <tr>
+          <td>Telefon</td>
+          <td>
+            <!-- <input type="text" formControlName="id"> -->
+            <input type="text" class="form-control" formControlName="telefonNo">
+            <div *ngIf="submitted && KisiDetayData.controls.telefonNo.errors" class="text-danger">
+              <div *ngIf="KisiDetayData.controls.telefonNo.errors.required">telefonNo is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Mail</td>
+          <td>
+            <input type="text" class="form-control" formControlName="email">
+            <div *ngIf="submitted && KisiDetayData.controls.email.errors" class="text-danger">
+              <div *ngIf="KisiDetayData.controls.email.errors.required">email is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>Konum</td>
+          <td>
+            <input type="text" class="form-control" formControlName="konum">
+            <div *ngIf="submitted && KisiDetayData.controls.konum.errors" class="text-danger">
+              <div *ngIf="KisiDetayData.controls.konum.errors.required">konum is required</div>
+            </div>
+
+          </td>
+        </tr>
+        <tr>
+          <td>Icerik</td>
+          <td>
+            <input type="text" class="form-control" formControlName="icerik">
+            <div *ngIf="submitted && KisiDetayData.controls.icerik.errors" class="text-danger">
+              <div *ngIf="KisiDetayData.controls.icerik.errors.required">icerik is required</div>
+            </div>
+
+          </td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <button (click)="Save()" type="submit" class="btn btn-success">Yeni Kaydet</button>
+            <button (click)="Update()" *ngIf="this.id" class="btn btn-warning">Güncelle</button>
+
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+
+    <div class="row">
+
+      <table class="table-striped">
+        <tr>
+          <td>Telefon</td>
+          <td>Mail</td>
+
+          <td>Konum</td>
+          <td>Içerik</td>
+
+          <td>Edit</td>
+          <td>Delete</td>
+        </tr>
+
+        <tr *ngFor="let d of data">
+          <td>{{d.telefonNo}}</td>
+          <td>{{d.email}}</td>
+
+          <td>{{d.konum}}</td>
+          <td>{{d.icerik}}</td>
+
+          <td><a (click)="EditData(d)" class="btn btn-warning">Edit</a></td>
+          <td><a (click)="deleteData(d.id)" class="btn btn-warning">Delete</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+
+
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="closeModal()">Close</button>
+</div>

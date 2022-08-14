@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Rise_ArifOzbey.Data;
@@ -9,9 +10,10 @@ using Rise_ArifOzbey.Data;
 namespace Rise_ArifOzbey.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220814105020_dbset1")]
+    partial class dbset1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -233,9 +235,6 @@ namespace Rise_ArifOzbey.Migrations
                         .HasMaxLength(140)
                         .HasColumnType("character varying(140)");
 
-                    b.Property<Guid>("KisiID")
-                        .HasColumnType("uuid");
-
                     b.Property<string>("Konum")
                         .IsRequired()
                         .HasMaxLength(240)
@@ -251,13 +250,13 @@ namespace Rise_ArifOzbey.Migrations
                     b.ToTable("KisiDetayModels");
                 });
 
-            modelBuilder.Entity("Model.KisiDetayModels", b =>
+            modelBuilder.Entity("Model.KisiModel", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Adi")
+                    b.Property<string>("Adı")
                         .IsRequired()
                         .HasMaxLength(240)
                         .HasColumnType("character varying(240)");
@@ -267,7 +266,10 @@ namespace Rise_ArifOzbey.Migrations
                         .HasMaxLength(240)
                         .HasColumnType("character varying(240)");
 
-                    b.Property<string>("Soyadi")
+                    b.Property<Guid>("KisiDetayID")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Soyadı")
                         .IsRequired()
                         .HasMaxLength(240)
                         .HasColumnType("character varying(240)");
