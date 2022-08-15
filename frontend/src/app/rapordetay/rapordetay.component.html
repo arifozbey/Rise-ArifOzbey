@@ -7,7 +7,7 @@
 
       <table class="table-striped">
         <tr>
-          <td>talepTarihi</td>
+          <td>TalepTarihi</td>
 
           <td>Konum</td>
           <td>Durumu</td>
@@ -19,8 +19,8 @@
           <td>{{d.talepTarihi}}</td>
 
           <td>{{d.konum}}</td>
-          <td *ngIf="d.durumu==1">Bekliyor</td>
-          <td *ngIf="d.durumu==2">Hazır</td>
+          <td *ngIf="d.durumu==1">Hazırlanıyor</td>
+          <td *ngIf="d.durumu==2">Tamamlandı</td>
           <td> <a *ngIf="d.dosyapath" href="{{d.dosyapath}}" class="btn btn-danger">Rapor Dosyasını İndir</a></td>
         </tr>
       </table>

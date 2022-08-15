@@ -39,8 +39,8 @@
 
         <tr *ngFor="let d of data">
           <td>{{d.konum}}</td>
-          <td *ngIf="d.durumu==1">Bekliyor</td>
-          <td *ngIf="d.durumu==2">Hazır</td>
+          <td *ngIf="d.durumu==1">Hazırlanıyor</td>
+          <td *ngIf="d.durumu==2">Tamamlandı</td>
           <td> <button *ngIf="d.dosyapath" (click)="download(d.dosyapath)" class="btn btn-danger">Rapor Dosyasını
               İndir</button></td>
           <button (click)="openModal(d)" class="btn btn-primary">Detay Göster</button>
