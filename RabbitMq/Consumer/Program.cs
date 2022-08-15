@@ -2,14 +2,16 @@
 using RabbitMQ.Client.Events;
 using System;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Consumer
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-
+            var context = new SchoolContext();
             var factory = new ConnectionFactory() { HostName = "localhost" };
             using (IConnection connection = factory.CreateConnection())
             using (IModel channel = connection.CreateModel())
@@ -22,12 +24,13 @@ namespace Consumer
                                      arguments: null);
 
                 var consumer = new EventingBasicConsumer(channel);
-                consumer.Received += (model, ea) =>
+                consumer.Received += async (model, ea) =>
                 {
                     var body = ea.Body;
-                    var message = Encoding.UTF8.GetString(body);
+                    var message =  Encoding.UTF8.GetString(body);
+                   Console.WriteLine($" message : " + message);
 
-                    Console.WriteLine($" message : " + message);
+
                 };
 
                 channel.BasicConsume(queue: "log_queue",
@@ -38,12 +41,8 @@ namespace Consumer
                 Console.ReadLine();
             }
 
-            #region Method2
-            //var logReceiver = new LogReceiver("localhost", "log_queue");
-            //logReceiver.GetLogs();
-            //Console.WriteLine(" Press [enter] to exit.");
-            //    Console.ReadLine();
-            #endregion
+           
         }
+      
     }
 }

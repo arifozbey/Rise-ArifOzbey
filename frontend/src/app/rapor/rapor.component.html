@@ -1,0 +1,54 @@
+<div class="container" style="padding-top:100px">
+
+  <form [formGroup]="RaporData">
+
+    <h3>Rise Rapor CRUD Operation</h3>
+    <div class="row">
+
+      <table class="">
+        <tr>
+          <td>Rapor için konum yazın</td>
+          <td>
+            <!-- <input type="text" formControlName="id"> -->
+            <input type="text" class="form-control" formControlName="konum">
+            <div *ngIf="submitted && RaporData.controls.konum.errors" class="text-danger">
+              <div *ngIf="RaporData.controls.konum.errors.required">adı is required</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+
+
+          <td colspan="2">
+            <button style="float: right;" (click)="Save()" type="submit" class="btn btn-success">Yeni Kaydet</button>
+          </td>
+        </tr>
+
+      </table>
+    </div>
+
+
+    <div class="row">
+
+      <table class="table-striped">
+        <tr>
+          <td>Konum</td>
+          <td>Hazırlanma Durum</td>
+          <td>Dosya</td>
+        </tr>
+
+        <tr *ngFor="let d of data">
+          <td>{{d.konum}}</td>
+          <td *ngIf="d.durumu==1">Bekliyor</td>
+          <td *ngIf="d.durumu==2">Hazır</td>
+          <td> <button *ngIf="d.dosyapath" (click)="download(d.dosyapath)" class="btn btn-danger">Rapor Dosyasını
+              İndir</button></td>
+          <button (click)="openModal(d)" class="btn btn-primary">Detay Göster</button>
+
+          <td><a (click)="deleteData(d.id)" class="btn btn-warning">Sil</a></td>
+        </tr>
+      </table>
+    </div>
+  </form>
+
+</div>

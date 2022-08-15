@@ -22,14 +22,14 @@ namespace Rise_ArifOzbey.Controllers
         //[HttpGet, ActionName("Get")]
 
         [HttpGet]
-        public IEnumerable<KisiDetayModels> Get()
+        public IEnumerable<KisiModel> Get()
         {
             var data = _context.KisiModels.ToList();
             return data;
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] KisiDetayModels obj)
+        public IActionResult Post([FromBody] KisiModel obj)
         {
             var data = _context.KisiModels.Add(obj);
             _context.SaveChanges();
@@ -37,8 +37,9 @@ namespace Rise_ArifOzbey.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(Guid id, [FromBody] KisiDetayModels obj)
+        public IActionResult Put(Guid id, [FromBody] KisiModel obj)
         {
+        
             var databul = _context.KisiModels.SingleOrDefault(x => x.Id == id);
             databul.Adi = obj.Adi;
             databul.Soyadi = obj.Soyadi;

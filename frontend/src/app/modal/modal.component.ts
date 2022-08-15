@@ -52,9 +52,7 @@ export class ModalComponent implements OnInit {
 
   Save() {
     this.submitted = true;
-     if (this.KisiDetayData.invalid) {
-            return;
-     }
+
     this.KisidetayService.postData(this.kisiid,this.KisiDetayData.value).subscribe((data: any) => {
       this.data = data;
       this.resetFrom();

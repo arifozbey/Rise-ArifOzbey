@@ -1,0 +1,80 @@
+
+<div class="container" style="padding-top:100px">
+
+  <form [formGroup]="KisiData">
+
+    <h3>Rise CRUD Operation</h3>
+    <div class="row">
+
+    <table class="">
+    <tr>
+      <td>Adı</td>
+      <td>
+        <!-- <input type="text" formControlName="id"> -->
+        <input type="text" class="form-control" formControlName="adi">
+        <div *ngIf="submitted && KisiData.controls.adi.errors" class="text-danger">
+          <div *ngIf="KisiData.controls.adi.errors.required">adı is required</div>
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>Soyadı</td>
+      <td>
+        <input type="text" class="form-control" formControlName="soyadi">
+        <div *ngIf="submitted && KisiData.controls.soyadi.errors" class="text-danger">
+          <div *ngIf="KisiData.controls.soyadi.errors.required">soyadı is required</div>
+        </div>
+      </td>
+    </tr>
+
+    <tr>
+      <td>Firma</td>
+      <td>
+        <input type="text" class="form-control" formControlName="firma">
+        <div *ngIf="submitted && KisiData.controls.firma.errors" class="text-danger">
+          <div *ngIf="KisiData.controls.firma.errors.required">Address is required</div>
+        </div>
+
+      </td>
+    </tr>
+    <tr>
+
+      <td colspan="2">
+        <button (click)="Save()" type="submit" class="btn btn-success">Yeni Kaydet</button>
+        <button (click)="Update()" *ngIf="this.id"  class="btn btn-warning">Güncelle</button>
+
+      </td>
+    </tr>
+
+  </table>
+  </div>
+
+
+  <div class="row">
+
+  <table class="table-striped">
+    <tr>
+      <td>Id</td>
+      <td>Adı</td>
+
+      <td>SoyAdı</td>
+      <td>Firma</td>
+
+      <td>Edit</td>
+      <td>Delete</td>
+    </tr>
+
+    <tr *ngFor="let d of data">
+      <td>{{d.id}}</td>
+      <td>{{d.adi}}</td>
+
+      <td>{{d.soyadi}}</td>
+      <td>{{d.firma}}</td>
+      <button (click)="openModal(d)" class="btn btn-primary">Detay Göster</button>
+
+      <td><a (click)="EditData(d)" class="btn btn-warning">Edit</a></td>
+      <td><a (click)="deleteData(d.id)" class="btn btn-warning">Delete</a></td>
+    </tr>
+  </table>
+  </div>
+  </form></div>

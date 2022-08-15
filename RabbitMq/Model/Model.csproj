@@ -53,6 +53,8 @@
   <ItemGroup>
     <Compile Include="RaporDurumEnum.cs" />
     <Compile Include="RaporModel.cs" />
+    <Compile Include="ExcelModel.cs" />
+    <Compile Include="RaporSonucDTO.cs" />
     <Compile Include="KisiModel.cs" />
     <Compile Include="KisiDetayModel.cs" />
     <Compile Include="LogModel.cs" />

@@ -38,7 +38,7 @@ namespace Rise_ArifOzbey
             services.AddControllersWithViews();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "WebApplication10", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rise-Arifözbey", Version = "v1" });
             });
         }
 
@@ -70,7 +70,7 @@ namespace Rise_ArifOzbey
             app.UseAuthentication();
             app.UseAuthorization();
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebApplication10 v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Rise-ArifÖzbey v1"));
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

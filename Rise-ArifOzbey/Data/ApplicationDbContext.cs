@@ -13,7 +13,8 @@ namespace Rise_ArifOzbey.Data
             : base(options)
         {
         }
-        public virtual DbSet<KisiDetayModels> KisiModels { get; set; }
+        public virtual DbSet<KisiModel> KisiModels { get; set; }
         public virtual DbSet<KisiDetayModel> KisiDetayModels { get; set; }
+        public virtual DbSet<RaporModel> RaporModels { get; set; }
     }
 }
