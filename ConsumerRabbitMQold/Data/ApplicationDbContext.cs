@@ -1,6 +1,8 @@
 ﻿
+
 using Microsoft.EntityFrameworkCore;
 using Model;
+using System.Configuration;
 
 namespace Consumer
 {

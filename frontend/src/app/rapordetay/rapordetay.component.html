@@ -7,21 +7,21 @@
 
       <table class="table-striped">
         <tr>
-          <td>TalepTarihi</td>
+          <td>Request Date</td>
 
-          <td>Konum</td>
-          <td>Durumu</td>
+          <td>Location</td>
+          <td>Status</td>
 
-          <td>Dosyapath</td>
+          <td>File Path</td>
         </tr>
 
         <tr *ngFor="let d of data">
           <td>{{d.talepTarihi}}</td>
 
           <td>{{d.konum}}</td>
-          <td *ngIf="d.durumu==1">Hazırlanıyor</td>
-          <td *ngIf="d.durumu==2">Tamamlandı</td>
-          <td> <a *ngIf="d.dosyapath" href="{{d.dosyapath}}" class="btn btn-danger">Rapor Dosyasını İndir</a></td>
+          <td *ngIf="d.durumu==1">Runnig</td>
+          <td *ngIf="d.durumu==2">Success</td>
+          <td> <a *ngIf="d.dosyapath" href="{{d.dosyapath}}" class="btn btn-danger">Download Report File</a></td>
         </tr>
       </table>
     </div>

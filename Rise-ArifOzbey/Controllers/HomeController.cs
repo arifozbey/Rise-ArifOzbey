@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Model;
 using Rise_ArifOzbey.Models;
 using System;
 using System.Collections.Generic;
@@ -20,7 +21,17 @@ namespace Rise_ArifOzbey.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var list = new List<KisiDetayModel>();
+            var model = new KisiDetayModel()
+            {
+               Email="arifozbey@gmail.com",Icerik="Test",KisiID=Guid.NewGuid(),Konum="Ankara",TelefonNo="05558707802"
+            };
+            list.Add(model);
+            list.Add(model);
+            list.Add(model);
+            IEnumerable<KisiDetayModel> responsenew = list;
+
+            return View(responsenew);
         }
 
         public IActionResult Privacy()

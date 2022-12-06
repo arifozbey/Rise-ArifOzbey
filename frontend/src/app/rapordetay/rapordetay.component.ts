@@ -12,7 +12,7 @@ import { RaporService } from '../rapor.service';
 export class RapordetayComponent implements OnInit {
   @Input() detayid: any;
   data: any;
-  Durumu: string = "Durum Detay"
+  Durumu: string = "Status Detail"
   RaporDetayData!: FormGroup;
   constructor(private activeModal: NgbActiveModal, private sanitizer: DomSanitizer,
     private RaporService: RaporService

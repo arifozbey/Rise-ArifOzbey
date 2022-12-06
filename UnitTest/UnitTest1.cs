@@ -1,9 +1,10 @@
 using System;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace UnitTest
 {
-    public class UnitTest1
+    public class UnitTest1Local
     {
       
         [Fact]
@@ -25,6 +26,7 @@ namespace UnitTest
         public int Multiplication(int n1, int n2) => n1 * n2;
         public double Division(double n1, double n2) => n1 / n2;
     }
+   
 }
     
 

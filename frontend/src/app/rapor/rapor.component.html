@@ -7,12 +7,12 @@
 
       <table class="">
         <tr>
-          <td>Rapor için konum yazın</td>
+          <td>Write Location for Report</td>
           <td>
             <!-- <input type="text" formControlName="id"> -->
             <input type="text" class="form-control" formControlName="konum">
             <div *ngIf="submitted && RaporData.controls.konum.errors" class="text-danger">
-              <div *ngIf="RaporData.controls.konum.errors.required">adı is required</div>
+              <div *ngIf="RaporData.controls.konum.errors.required">Name is required</div>
             </div>
           </td>
         </tr>
@@ -20,7 +20,7 @@
 
 
           <td colspan="2">
-            <button style="float: right;" (click)="Save()" type="submit" class="btn btn-success">Yeni Kaydet</button>
+            <button style="float: right;" (click)="Save()" type="submit" class="btn btn-success">New Save</button>
           </td>
         </tr>
 
@@ -32,20 +32,20 @@
 
       <table class="table-striped">
         <tr>
-          <td>Konum</td>
-          <td>Hazırlanma Durum</td>
-          <td>Dosya</td>
+          <td>Location</td>
+          <td>Runnig Status</td>
+          <td>File</td>
         </tr>
 
         <tr *ngFor="let d of data">
           <td>{{d.konum}}</td>
-          <td *ngIf="d.durumu==1">Hazırlanıyor</td>
-          <td *ngIf="d.durumu==2">Tamamlandı</td>
-          <td> <button *ngIf="d.dosyapath" (click)="download(d.dosyapath)" class="btn btn-danger">Rapor Dosyasını
-              İndir</button></td>
-          <button (click)="openModal(d)" class="btn btn-primary">Detay Göster</button>
+          <td *ngIf="d.durumu==1">Runnig</td>
+          <td *ngIf="d.durumu==2">Success</td>
+          <td> <button *ngIf="d.dosyapath" (click)="download(d.dosyapath)" class="btn btn-danger">Report File Download
+              </button></td>
+          <button (click)="openModal(d)" class="btn btn-primary">Detail Show</button>
 
-          <td><a (click)="deleteData(d.id)" class="btn btn-warning">Sil</a></td>
+          <td><a (click)="deleteData(d.id)" class="btn btn-warning">Delete</a></td>
         </tr>
       </table>
     </div>

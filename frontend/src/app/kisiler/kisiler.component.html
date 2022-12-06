@@ -8,31 +8,31 @@
 
     <table class="">
     <tr>
-      <td>Adı</td>
+      <td>Name</td>
       <td>
         <!-- <input type="text" formControlName="id"> -->
         <input type="text" class="form-control" formControlName="adi">
         <div *ngIf="submitted && KisiData.controls.adi.errors" class="text-danger">
-          <div *ngIf="KisiData.controls.adi.errors.required">adı is required</div>
+          <div *ngIf="KisiData.controls.adi.errors.required">Name is required</div>
         </div>
       </td>
     </tr>
     <tr>
-      <td>Soyadı</td>
+      <td>SurName</td>
       <td>
         <input type="text" class="form-control" formControlName="soyadi">
         <div *ngIf="submitted && KisiData.controls.soyadi.errors" class="text-danger">
-          <div *ngIf="KisiData.controls.soyadi.errors.required">soyadı is required</div>
+          <div *ngIf="KisiData.controls.soyadi.errors.required">SurName is required</div>
         </div>
       </td>
     </tr>
 
     <tr>
-      <td>Firma</td>
+      <td>Company</td>
       <td>
         <input type="text" class="form-control" formControlName="firma">
         <div *ngIf="submitted && KisiData.controls.firma.errors" class="text-danger">
-          <div *ngIf="KisiData.controls.firma.errors.required">Address is required</div>
+          <div *ngIf="KisiData.controls.firma.errors.required">Company is required</div>
         </div>
 
       </td>
@@ -40,8 +40,8 @@
     <tr>
 
       <td colspan="2">
-        <button (click)="Save()" type="submit" class="btn btn-success">Yeni Kaydet</button>
-        <button (click)="Update()" *ngIf="this.id"  class="btn btn-warning">Güncelle</button>
+        <button (click)="Save()" type="submit" class="btn btn-success">New Save</button>
+        <button (click)="Update()" *ngIf="this.id"  class="btn btn-warning">Update</button>
 
       </td>
     </tr>
@@ -55,10 +55,10 @@
   <table class="table-striped">
     <tr>
       <td>Id</td>
-      <td>Adı</td>
+      <td>Name</td>
 
-      <td>SoyAdı</td>
-      <td>Firma</td>
+      <td>SurName</td>
+      <td>Company</td>
 
       <td>Edit</td>
       <td>Delete</td>
@@ -70,7 +70,7 @@
 
       <td>{{d.soyadi}}</td>
       <td>{{d.firma}}</td>
-      <button (click)="openModal(d)" class="btn btn-primary">Detay Göster</button>
+      <button (click)="openModal(d)" class="btn btn-primary">Show Detail</button>
 
       <td><a (click)="EditData(d)" class="btn btn-warning">Edit</a></td>
       <td><a (click)="deleteData(d.id)" class="btn btn-warning">Delete</a></td>

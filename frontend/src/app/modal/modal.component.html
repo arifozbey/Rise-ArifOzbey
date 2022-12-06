@@ -7,12 +7,12 @@
 
       <table class="">
         <tr>
-          <td>Telefon</td>
+          <td>Phone</td>
           <td>
             <!-- <input type="text" formControlName="id"> -->
             <input type="text" class="form-control" formControlName="telefonNo">
             <div *ngIf="submitted && KisiDetayData.controls.telefonNo.errors" class="text-danger">
-              <div *ngIf="KisiDetayData.controls.telefonNo.errors.required">telefonNo is required</div>
+              <div *ngIf="KisiDetayData.controls.telefonNo.errors.required">Phone is required</div>
             </div>
           </td>
         </tr>
@@ -21,34 +21,34 @@
           <td>
             <input type="text" class="form-control" formControlName="email">
             <div *ngIf="submitted && KisiDetayData.controls.email.errors" class="text-danger">
-              <div *ngIf="KisiDetayData.controls.email.errors.required">email is required</div>
+              <div *ngIf="KisiDetayData.controls.email.errors.required">Mail is required</div>
             </div>
           </td>
         </tr>
         <tr>
-          <td>Konum</td>
+          <td>Location</td>
           <td>
             <input type="text" class="form-control" formControlName="konum">
             <div *ngIf="submitted && KisiDetayData.controls.konum.errors" class="text-danger">
-              <div *ngIf="KisiDetayData.controls.konum.errors.required">konum is required</div>
+              <div *ngIf="KisiDetayData.controls.konum.errors.required">Location is required</div>
             </div>
 
           </td>
         </tr>
         <tr>
-          <td>Icerik</td>
+          <td>Detail</td>
           <td>
             <input type="text" class="form-control" formControlName="icerik">
             <div *ngIf="submitted && KisiDetayData.controls.icerik.errors" class="text-danger">
-              <div *ngIf="KisiDetayData.controls.icerik.errors.required">icerik is required</div>
+              <div *ngIf="KisiDetayData.controls.icerik.errors.required">Detail is required</div>
             </div>
 
           </td>
         </tr>
         <tr>
           <td colspan="2">
-            <button (click)="Save()" type="submit" class="btn btn-success">Yeni Kaydet</button>
-            <button (click)="Update()" *ngIf="this.id" class="btn btn-warning">Güncelle</button>
+            <button (click)="Save()" type="submit" class="btn btn-success">New Save</button>
+            <button (click)="Update()" *ngIf="this.id" class="btn btn-warning">Update</button>
 
           </td>
         </tr>
@@ -61,11 +61,11 @@
 
       <table class="table-striped">
         <tr>
-          <td>Telefon</td>
+          <td>Phone</td>
           <td>Mail</td>
 
-          <td>Konum</td>
-          <td>Içerik</td>
+          <td>Location</td>
+          <td>Detail</td>
 
           <td>Edit</td>
           <td>Delete</td>
