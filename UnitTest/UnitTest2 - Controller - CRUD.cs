@@ -48,8 +48,8 @@ namespace UnitTest
             var controller = new CRUDController(data);
 
             // Act guid iþlemi test için rasgele yapýldý, db ler deki id farklý olucaktýr
-            var DemoData = new KisiModel() {Id= new Guid("a493787b-9bdd-45f0-8faa-a6f4cf926f48"), Adi = "arif", Firma = "ozbey", Soyadi = "özbey" };
-            var result = controller.Post(DemoData);
+            var DemoData = new KisiModel() { Adi = "arif", Firma = "ozbey", Soyadi = "özbey" };
+            var result = controller.Put(new Guid("a493787b-9bdd-45f0-8faa-a6f4cf926f48"), DemoData);
 
             // Assert
             var viewResult = Assert.IsType<ActionResult<KisiModel>>(result);

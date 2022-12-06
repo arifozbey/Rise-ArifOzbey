@@ -28,7 +28,7 @@ namespace UnitTest
             var controller = new RaporController(data);
 
             // Act guid iþlemi test için rasgele yapýldý, db ler deki id farklý olucaktýr
-            var result = controller.Get(new Guid("a493787b-9bdd-45f0-8faa-a6f4cf926f48"));
+            var result = controller.Get();
 
             // Assert
             var viewResult = Assert.IsType<IEnumerable<RaporModel>>(result);
