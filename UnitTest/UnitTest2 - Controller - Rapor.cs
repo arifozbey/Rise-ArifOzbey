@@ -15,82 +15,83 @@ namespace UnitTest
 {
     public class UnitTest2Rapor
     {
-       static string conn = "User ID=root;Password=root;Server=192.168.116.89;Port=5432;Database=risearifozbey;Integrated Security=true;Pooling=true;Timeout=15;";
+       static string conn = "User ID=root;Password=root;Server=192.168.144.89;Port=5432;Database=risearifozbey;Integrated Security=true;Pooling=true;Timeout=15;";
+        DbContextOptionsBuilder<ApplicationDbContext> _optionsBuilder;
 
         [Fact]
         public async Task ControllerRaporGet()
         {
             // Arrange veya IApplicationDbContext kullanýlabilir
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>().UseNpgsql(conn);
-            var mock = new Mock<ApplicationDbContext>(optionsBuilder.Options);
-            ApplicationDbContext data = mock.Object;
+            _optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            _optionsBuilder.UseNpgsql(conn);
 
-            var controller = new RaporController(data);
+
+            var controller = new RaporController(new ApplicationDbContext(_optionsBuilder.Options));
 
             // Act guid iþlemi test için rasgele yapýldý, db ler deki id farklý olucaktýr
             var result = controller.Get();
 
             // Assert
-            var viewResult = Assert.IsType<IEnumerable<RaporModel>>(result);
-            var model = Assert.IsAssignableFrom<IEnumerable<RaporModel>>(
+            var viewResult = Assert.IsType<List<RaporModel>>(result);
+            var model = Assert.IsAssignableFrom<List<RaporModel>>(
                         viewResult.ToList());
-            Assert.Equal(1, model.Count());
+            Assert.True((model.Count() > 0 ? true : false));
 
         }
         [Fact]
         public async Task ControllerRaporPut()
         {
             // Arrange veya IApplicationDbContext kullanýlabilir
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>().UseNpgsql(conn);
-            var mock = new Mock<ApplicationDbContext>(optionsBuilder.Options);
-            ApplicationDbContext data = mock.Object;
+            _optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            _optionsBuilder.UseNpgsql(conn);
 
-            var controller = new RaporController(data);
+
+            var controller = new RaporController(new ApplicationDbContext(_optionsBuilder.Options));
+
 
             // Act guid iþlemi test için rasgele yapýldý, db ler deki id farklý olucaktýr
-            var DemoData = new RaporModel() { Id=new Guid("a493787b-9bdd-45f0-8faa-a6f4cf926f48"),Dosyapath = "asda", Durumu = 1, Konum = "HDD", TalepTarihi = DateTime.Now };
+            var DemoData = new RaporModel() { Id=new Guid("89fb46df-a134-4358-8367-50346d53bf2c"),Dosyapath = "asda", Durumu = 1, Konum = "HDD", TalepTarihi = DateTime.Now };
             var result = controller.Post(DemoData);
 
             // Assert
-            var viewResult = Assert.IsType<ActionResult<RaporModel>>(result);
-            Assert.IsType<OkResult>(viewResult);
+            Assert.IsType<OkResult>(result);
 
         }
         [Fact]
         public async Task ControllerRaporPost()
         {
             // Arrange veya IApplicationDbContext kullanýlabilir
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>().UseNpgsql(conn);
-            var mock = new Mock<ApplicationDbContext>(optionsBuilder.Options);
-            ApplicationDbContext data = mock.Object;
+            _optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            _optionsBuilder.UseNpgsql(conn);
 
-            var controller = new RaporController(data);
+
+            var controller = new RaporController(new ApplicationDbContext(_optionsBuilder.Options));
+
 
             // Act guid iþlemi test için rasgele yapýldý, db ler deki id farklý olucaktýr
             var DemoData = new RaporModel() { Dosyapath="asda",Durumu=1,Konum="HDD",TalepTarihi=DateTime.Now};
             var result = controller.Post(DemoData);
 
             // Assert
-            var viewResult = Assert.IsType<IEnumerable<RaporModel>>(result);
-            Assert.IsType<OkResult>(viewResult);
+            Assert.IsType<OkResult>(result);
 
         }
         [Fact]
         public async Task ControllerRaporDelete()
         {
             // Arrange veya IApplicationDbContext kullanýlabilir
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>().UseNpgsql(conn);
-            var mock = new Mock<ApplicationDbContext>(optionsBuilder.Options);
-            ApplicationDbContext data = mock.Object;
+            _optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            _optionsBuilder.UseNpgsql(conn);
 
-            var controller = new RaporController(data);
+
+            var controller = new RaporController(new ApplicationDbContext(_optionsBuilder.Options));
+
 
             // Act guid iþlemi test için rasgele yapýldý, db ler deki id farklý olucaktýr
-            var result = controller.Delete(new Guid("a493787b-9bdd-45f0-8faa-a6f4cf926f48"));
+            var result = controller.Delete(new Guid("89fb46df-a134-4358-8367-50346d53bf2c"));
 
             // Assert
-            var viewResult = Assert.IsType<IEnumerable<RaporModel>>(result);
-            Assert.IsType<OkResult>(viewResult);
+            Assert.IsType<OkResult>(result);
 
         }
     }

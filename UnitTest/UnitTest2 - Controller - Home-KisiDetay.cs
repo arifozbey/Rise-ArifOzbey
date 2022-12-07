@@ -16,7 +16,8 @@ namespace UnitTest
 
     public class UnitTest2
     {
-        static string conn = "User ID=root;Password=root;Server=192.168.116.89;Port=5432;Database=risearifozbey;Integrated Security=true;Pooling=true;Timeout=15;";
+        static string conn = "User ID=root;Password=root;Server=192.168.144.89;Port=5432;Database=risearifozbey;Integrated Security=true;Pooling=true;Timeout=15;";
+        DbContextOptionsBuilder<ApplicationDbContext> _optionsBuilder;
 
         [Fact]
         public async Task ControllerIndex()
@@ -61,43 +62,85 @@ namespace UnitTest
             Assert.Equal(0, model);
 
         }
+
+        [Fact]
+        public async Task ControllerKisiDetayPost()
+        {
+            // Arrange veya IApplicationDbContext kullanýlabilir
+            _optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            _optionsBuilder.UseNpgsql(conn);
+
+
+            var controller = new KisiDetayController(new ApplicationDbContext(_optionsBuilder.Options));
+
+            var data = new KisiDetayModel() { Email="arif@arif.com",Icerik="asd",KisiID=Guid.NewGuid(),Konum="aaaa",TelefonNo="123" };
+            // Act guid iþlemi test için rasgele yapýldý, db ler deki id farklý olucaktýr
+            var result = controller.Post(new Guid("dacb22bb-b404-483b-a7e6-854455b37fde"), data);
+
+            // Assert
+       
+            Assert.IsType<OkResult>(result);
+
+        }
+
         [Fact]
         public async Task ControllerKisiDetayGet()
         {
             // Arrange veya IApplicationDbContext kullanýlabilir
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>().UseNpgsql(conn);
-            var mock = new Mock<ApplicationDbContext>(optionsBuilder.Options);
-            ApplicationDbContext data = mock.Object;
+            _optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            _optionsBuilder.UseNpgsql(conn);
 
-            var controller = new KisiDetayController(data);
+
+            var controller = new KisiDetayController(new ApplicationDbContext(_optionsBuilder.Options));
+
+
 
             // Act guid iþlemi test için rasgele yapýldý, db ler deki id farklý olucaktýr
-            var result = controller.Get(new Guid("a493787b-9bdd-45f0-8faa-a6f4cf926f48"));
+            var result = controller.Get(new Guid("dacb22bb-b404-483b-a7e6-854455b37fde"));
 
             // Assert
-            var viewResult = Assert.IsType<IEnumerable<KisiDetayModel>>(result);
-            var model = Assert.IsAssignableFrom<IEnumerable<KisiDetayModel>>(
-                        viewResult.ToList());
-            Assert.Equal(1, model.Count());
+          
+            Assert.Equal(1, result.Count());
+
+        }
+        [Fact]
+        public async Task ControllerKisiDetayGetAll()
+        {
+            // Arrange veya IApplicationDbContext kullanýlabilir
+            _optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            _optionsBuilder.UseNpgsql(conn);
+
+
+            var controller = new KisiDetayController(new ApplicationDbContext(_optionsBuilder.Options));
+
+
+
+            // Act guid iþlemi test için rasgele yapýldý, db ler deki id farklý olucaktýr
+            var result = controller.GetAll();
+
+            // Assert
+
+            Assert.True((result.Count() > 0 ? true : false));
 
         }
         [Fact]
         public async Task ControllerKisiDetayPut()
         {
             // Arrange veya IApplicationDbContext kullanýlabilir
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>().UseNpgsql(conn);
-            var mock = new Mock<ApplicationDbContext>(optionsBuilder.Options);
-            ApplicationDbContext data = mock.Object;
+            _optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            _optionsBuilder.UseNpgsql(conn);
 
-            var controller = new KisiDetayController(data);
+
+            var controller = new KisiDetayController(new ApplicationDbContext(_optionsBuilder.Options));
+
+
 
             // Act guid iþlemi test için rasgele yapýldý, db ler deki id farklý olucaktýr
-            var DemoData = new KisiDetayModel();
-            var result = controller.Put(new Guid("a493787b-9bdd-45f0-8faa-a6f4cf926f48"), DemoData);
+            var data = new KisiDetayModel() { Email = "arif@arif.com", Icerik = "asd", KisiID = Guid.NewGuid(), Konum = "aaaa", TelefonNo = "123" };
+            var result = controller.Put(new Guid("dacb22bb-b404-483b-a7e6-854455b37fde"), data);
 
             // Assert
-            var viewResult = Assert.IsType<IEnumerable<KisiDetayModel>>(result);
-            Assert.IsType<OkResult>(viewResult);
+            Assert.IsType<OkResult>(result);
 
         }
 
@@ -105,19 +148,20 @@ namespace UnitTest
         public async Task ControllerKisiDetayDelete()
         {
             // Arrange veya IApplicationDbContext kullanýlabilir
-            var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>().UseNpgsql(conn);
-            var mock = new Mock<ApplicationDbContext>(optionsBuilder.Options);
-            ApplicationDbContext data = mock.Object;
+            _optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
+            _optionsBuilder.UseNpgsql(conn);
 
-            var controller = new KisiDetayController(data);
+
+            var controller = new KisiDetayController(new ApplicationDbContext(_optionsBuilder.Options));
+
+
 
             // Act guid iþlemi test için rasgele yapýldý, db ler deki id farklý olucaktýr
             var DemoData = new KisiDetayModel();
-            var result = controller.Delete(new Guid("a493787b-9bdd-45f0-8faa-a6f4cf926f48"));
+            var result = controller.Delete(new Guid("dacb22bb-b404-483b-a7e6-854455b37fde"));
 
             // Assert
-            var viewResult = Assert.IsType<IEnumerable<KisiDetayModel>>(result);
-            Assert.IsType<OkResult>(viewResult);
+            Assert.IsType<OkResult>(result);
 
         }
     }

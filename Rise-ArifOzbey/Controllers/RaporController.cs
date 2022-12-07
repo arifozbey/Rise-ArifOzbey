@@ -15,8 +15,8 @@ namespace Rise_ArifOzbey.Controllers
     [Route("[controller]")]
     public class RaporController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        public RaporController(ApplicationDbContext context)
+        private readonly IApplicationDbContext _context;
+        public RaporController(IApplicationDbContext context)
         {
             _context = context;
         }

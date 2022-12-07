@@ -14,8 +14,8 @@ namespace Rise_ArifOzbey.Controllers
 
     public class CRUDController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        public CRUDController(ApplicationDbContext context)
+        private readonly IApplicationDbContext _context;
+        public CRUDController(IApplicationDbContext context)
         {
             _context = context;
         }
@@ -44,7 +44,7 @@ namespace Rise_ArifOzbey.Controllers
             databul.Adi = obj.Adi;
             databul.Soyadi = obj.Soyadi;
             databul.Firma = obj.Firma;
-            _context.Update(databul);
+            _context.KisiModels.Update(databul);
             _context.SaveChanges();
             return Ok();
         }

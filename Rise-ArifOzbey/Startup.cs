@@ -40,6 +40,10 @@ namespace Rise_ArifOzbey
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Rise-Arifözbey", Version = "v1" });
             });
+
+            // Register the service and implementation for the database context
+            services.AddScoped<IApplicationDbContext>(provider => provider.GetService<ApplicationDbContext>());
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

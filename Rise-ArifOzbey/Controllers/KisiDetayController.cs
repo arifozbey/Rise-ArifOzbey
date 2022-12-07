@@ -14,12 +14,18 @@ namespace Rise_ArifOzbey.Controllers
 
     public class KisiDetayController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
-        public KisiDetayController(ApplicationDbContext context)
+        private readonly IApplicationDbContext _context;
+        public KisiDetayController(IApplicationDbContext context)
         {
             _context = context;
         }
         //[HttpGet, ActionName("Get")]
+        [HttpGet]
+        public IEnumerable<KisiDetayModel> GetAll()
+        {
+            var data = _context.KisiDetayModels.ToList();
+            return data;
+        }
 
         [HttpGet("{kisiid}")]
         public IEnumerable<KisiDetayModel> Get(Guid kisiid)
@@ -44,7 +50,7 @@ namespace Rise_ArifOzbey.Controllers
             databul.Icerik = obj.Icerik;
             databul.Konum = obj.Konum;
             databul.TelefonNo = obj.TelefonNo;
-            _context.Update(databul);
+            _context.KisiDetayModels.Update(databul);
             _context.SaveChanges();
             return Ok();
         }
