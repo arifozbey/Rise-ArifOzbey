@@ -1,7 +1,11 @@
 versiyon uyumsuzluğu fix-----
+
 npm uninstall -g @angular/cli
+
 npm cache clean
+
 npm install -g @angular/cli@12.2.11
+
 https://nodejs.org/download/release/v14.15.0/node-v14.15.0-x64.msi
 kurun...
 
