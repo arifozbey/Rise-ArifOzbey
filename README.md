@@ -1,3 +1,10 @@
+versiyon uyumsuzluğu fix-----
+npm uninstall -g @angular/cli
+npm cache clean
+npm install -g @angular/cli@12.2.11
+https://nodejs.org/download/release/v14.15.0/node-v14.15.0-x64.msi
+kurun...
+
 1) ilk olarak docker desktop, vs code ve visual studio 2022 kurulur
 2) aşağıdaki docker compose ile ilgili container ler yüklenir
 
